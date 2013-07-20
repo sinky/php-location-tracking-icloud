@@ -10,18 +10,20 @@ error_reporting(E_ALL);
 // Maps Adress to Coordinates
 // http://maps.googleapis.com/maps/api/geocode/json?address=Schwerte,%20Nordrhein-Westfalen,%20Deutschland&sensor=false&language=de
 
+if( file_exists('config.php'))	require_once('config.php');
+
+if(! defined('ICLOUD_USER') ) define('ICLOUD_USER', 'CHANGE_ME');
+if(! defined('ICLOUD_PASS') ) define('ICLOUD_PASS', 'CHANGE_ME');
+if(! defined('DEVICES') ) define('DEVICES', '0');
+
 require('flintstone.class.php');
-
-define('ICLOUD_USER', 'CHANGE_ME');
-define('ICLOUD_PASS', 'CHANGE_ME');
-
 $options = array('dir' => './', 'gzip' => true);
 $db['settings'] = Flintstone::load('db_settings', $options);
 $db['locations'] = Flintstone::load('db_locations', $options);
 
+if(isset($_GET['debug'])) { debug(); }
 
-getPosition( array("0", "1") );
-
+getPosition( explode(',', DEVICES) );
 
 function getPosition($deviceIDs) {
   if(!is_array($deviceIDs)) { die("deviceID muss vom Type Array sein"); }
@@ -82,4 +84,11 @@ function reverse_geocode($lat,$lng) {
 
   $location = implode(", ", $implode );
   return $location;
+}
+
+function debug() {
+  require('class.sosumi.php');
+  $ssm = new Sosumi(ICLOUD_USER, ICLOUD_PASS);
+  var_dump($ssm);
+  exit;
 }
