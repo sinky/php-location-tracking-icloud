@@ -1,12 +1,13 @@
 php-location-tracking-icloud
 ============================
+mit "find my iPhone"
 
-mit  "find my iPhone"
 
 track.php
 ---------
-speichert Daten von Find my iPhone in Datenbank
+Speichert Daten von Find my iPhone in Datenbank. Wird durch Cron aufgerufen.
+
 
 index.php
 ---------
-zeigt Daten in Tabellenform der Location-Datenbank oder mit ?device=<ID> alle entsprechenden Daten als JSON
+zeigt Daten der Location-Datenbank in Tabellenform und als Google Map oder mit ?device=<ID> alle entsprechenden Daten als JSON
