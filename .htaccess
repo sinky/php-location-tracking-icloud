@@ -2,8 +2,14 @@
 Order Deny,Allow
 Deny from all
 Allow from 192.168.178.0/24
+Allow from 127.0.0.0/24
 
-# Deny track.php, instead run "php track.php"
-<Files track.php>
+<Files config.php>
 deny from all
 </Files>
+
+# Deny track.php, instead run "php track.php"
+#<Files track.php>
+#deny from all
+#</Files>
+
