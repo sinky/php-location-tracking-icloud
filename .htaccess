@@ -7,9 +7,3 @@ Allow from 127.0.0.0/24
 <Files config.php>
 deny from all
 </Files>
-
-# Deny track.php, instead run "php track.php"
-#<Files track.php>
-#deny from all
-#</Files>
-
